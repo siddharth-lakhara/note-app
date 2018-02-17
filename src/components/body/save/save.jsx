@@ -1,10 +1,40 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './save.css';
 
-const Save = () => (
-  <div>
-    <button className="save-button">Save</button>
-  </div>
-);
+class Save extends React.Component {
+  constructor(props) {
+    super(props);
+    this.saveNotes = this.saveNotes.bind(this);
+  }
+
+  saveNotes() {
+    const message = this.props.noteMessage;
+    const title = this.props.titleText;
+    const key = this.props.keyId;
+    const newNoteObject = {
+      key,
+      title,
+      message,
+    };
+    this.props.clearContents();
+    // this.props
+  }
+
+  render() {
+    return (
+      <div>
+        <button className="save-button" onClick={this.saveNotes}>Save</button>
+      </div>
+    );
+  }
+}
+
+Save.propTypes = {
+  noteMessage: PropTypes.string.isRequired,
+  titleText: PropTypes.string.isRequired,
+  keyId: PropTypes.number.isRequired,
+  clearContents: PropTypes.func.isRequired,
+};
 
 export default Save;

@@ -9,15 +9,35 @@ class Body extends React.Component {
     this.state = {
       color: 'black',
       charactersLeft: this.props.maxLength,
+      titleText: this.props.titleText,
+      noteMessage: this.props.noteMessage,
     };
     this.changeHandler = this.changeHandler.bind(this);
+    this.titleChange = this.titleChange.bind(this);
+    this.clearContents = this.clearContents.bind(this);
+  }
+
+  titleChange(event) {
+    const input = event.target.value;
+    this.setState({
+      titleText: input,
+    });
   }
 
   changeHandler(event) {
     const input = event.target.value;
     this.setState({
-      color: (input.length === 5) ? 'red' : 'black',
+      color: (input.length === this.props.maxLength) ? 'red' : 'black',
       charactersLeft: this.props.maxLength - input.length,
+      noteMessage: input,
+    });
+  }
+
+  clearContents() {
+    this.setState({
+      titleText: '',
+      charactersLeft: this.props.maxLength,
+      noteMessage: '',
     });
   }
 
@@ -30,6 +50,8 @@ class Body extends React.Component {
             type="text"
             className="body-noteTitle"
             placeholder={this.props.titlePlaceHolder}
+            value={this.state.titleText}
+            onChange={this.titleChange}
           />
         </div>
         <div>
@@ -40,11 +62,18 @@ class Body extends React.Component {
             maxLength={this.props.maxLength}
             onChange={this.changeHandler}
             style={{ color: this.state.color }}
+            value={this.state.noteMessage}
           />
           <p className="body-remainingCharacters">
           Character left: {this.state.charactersLeft}
           </p>
-          <Save />
+          <Save
+            saveNotes={this.props.saveNotes}
+            titleText={this.state.titleText}
+            noteMessage={this.state.noteMessage}
+            keyId={this.props.keyId}
+            clearContents={this.clearContents}
+          />
         </div>
       </div>
 
@@ -54,6 +83,12 @@ class Body extends React.Component {
 
 Body.propTypes = {
   maxLength: PropTypes.number.isRequired,
+  titlePlaceHolder: PropTypes.string.isRequired,
+  notePlaceHolder: PropTypes.string.isRequired,
+  saveNotes: PropTypes.func.isRequired,
+  noteMessage: PropTypes.string.isRequired,
+  titleText: PropTypes.string.isRequired,
+  keyId: PropTypes.number.isRequired,
 };
 
 export default Body;
