@@ -18,6 +18,7 @@ class App extends React.Component {
     this.changeState = this.changeState.bind(this);
     this.saveNotes = this.saveNotes.bind(this);
     this.editNotes = this.editNotes.bind(this);
+    this.clearContents = this.clearContents.bind(this);
   }
 
   changeState(newState) {
@@ -27,9 +28,12 @@ class App extends React.Component {
   }
 
   saveNotes(newNoteArray) {
+    const currentKey = newNoteArray.key;
+    const newNoteStorage = this.state.noteStorage;
+    newNoteStorage[currentKey - 1] = newNoteArray;
     this.setState({
-      noteStorage: [...this.state.noteStorage, newNoteArray],
-      key: this.state.key + 1,
+      noteStorage: newNoteStorage,
+      key: newNoteStorage.length + 1,
     }, () => {
       console.log('Save Notes called in App');
       console.log(this.state.noteStorage);
@@ -41,8 +45,20 @@ class App extends React.Component {
     this.setState({
       titleText: oldNote.title,
       noteMessage: oldNote.message,
+      key: oldNote.key,
     }, () => {
       this.changeState(1);
+      console.log("I'm back");
+      // this.setState({
+      //   key: oldKey,
+      // });
+    });
+  }
+
+  clearContents() {
+    this.setState({
+      titleText: '',
+      noteMessage: '',
     });
   }
 
@@ -63,6 +79,7 @@ class App extends React.Component {
             noteStorage={this.state.noteStorage}
             keyId={this.state.key}
             changeState={this.changeState}
+            clearContents={this.clearContents}
           />
           <FooterComponent />
         </div>

@@ -39,6 +39,7 @@ class Body extends React.Component {
       charactersLeft: this.props.maxLength,
       noteMessage: '',
     });
+    this.props.clearContents();
   }
 
   render() {
@@ -91,6 +92,7 @@ Body.propTypes = {
   titleText: PropTypes.string.isRequired,
   keyId: PropTypes.number.isRequired,
   changeState: PropTypes.func.isRequired,
+  clearContents: PropTypes.func.isRequired,
 };
 
 export default Body;
