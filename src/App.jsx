@@ -21,8 +21,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <HeaderComponent />
-        <BodyComponent />
+        <HeaderComponent
+          headerText="Note Making Application"
+        />
+        <BodyComponent
+          titlePlaceHolder="Note Title Here"
+          notePlaceHolder="Your Note here"
+          maxLength={120}
+        />
         <FooterComponent />
       </div>
     );

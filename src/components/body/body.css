@@ -1,3 +1,21 @@
 .body-mainClass {
     flex: 1;
+    flex-direction: inherit;
+    justify-content: space-around;
+}
+
+.body-noteTitleText, .body-noteBodyText {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.body-noteTitle {
+    width: 50%;
+    font-size: 25px;
+}
+
+.body-noteBody {
+    width: 50%;
+    font-size: 20px;
+    height: 180px;
 }
