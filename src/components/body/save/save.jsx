@@ -18,7 +18,7 @@ class Save extends React.Component {
       message,
     };
     this.props.clearContents();
-    // this.props
+    this.props.saveNotes(newNoteObject);
   }
 
   render() {
@@ -35,6 +35,7 @@ Save.propTypes = {
   titleText: PropTypes.string.isRequired,
   keyId: PropTypes.number.isRequired,
   clearContents: PropTypes.func.isRequired,
+  saveNotes: PropTypes.func.isRequired,
 };
 
 export default Save;

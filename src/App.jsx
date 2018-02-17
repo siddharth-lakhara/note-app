@@ -29,6 +29,7 @@ class App extends Component {
       noteStorage: [...this.state.noteStorage, newNoteArray],
       key: this.state.key + 1,
     }, () => {
+      console.log('Save Notes called in App');
       console.log(this.state.noteStorage);
     });
   }
