@@ -35,7 +35,6 @@ class App extends React.Component {
       noteStorage: newNoteStorage,
       key: newNoteStorage.length + 1,
     }, () => {
-      console.log('Save Notes called in App');
       console.log(this.state.noteStorage);
     });
   }
@@ -48,10 +47,6 @@ class App extends React.Component {
       key: oldNote.key,
     }, () => {
       this.changeState(1);
-      console.log("I'm back");
-      // this.setState({
-      //   key: oldKey,
-      // });
     });
   }
 
