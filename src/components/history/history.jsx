@@ -33,7 +33,11 @@ class History extends React.Component {
 }
 
 History.propTypes = {
-  noteStorage: PropTypes.array.isRequired,
+  noteStorage: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.number,
+    title: PropTypes.string,
+    message: PropTypes.string,
+  })).isRequired,
   changeState: PropTypes.func.isRequired,
   editNotes: PropTypes.func.isRequired,
 };

@@ -5,7 +5,7 @@ import './shownotes.css';
 class ShowNotes extends React.Component {
   render() {
     return (
-      this.props.noteStorage.map((elem, id) => (
+      this.props.noteStorage.map(elem => (
         <div>
           <button
             className="ShowNotes-titleButton"
@@ -23,7 +23,11 @@ class ShowNotes extends React.Component {
 
 
 ShowNotes.propTypes = {
-  noteStorage: PropTypes.array.isRequired,
+  noteStorage: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.number,
+    title: PropTypes.string,
+    message: PropTypes.string,
+  })).isRequired,
   editNotes: PropTypes.func.isRequired,
 };
 
