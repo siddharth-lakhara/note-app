@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import HeaderComponent from './components/header/header';
 import BodyComponent from './components/body/body';
 import FooterComponent from './components/footer/footer';
+import HistoryComponent from './components/history/history';
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       key: 1,
-      currentState: 0,
+      currentState: 1,
       noteStorage: [],
       titleText: '',
       noteMessage: '',
@@ -19,7 +20,7 @@ class App extends Component {
   }
 
   changeState(newState) {
-    this.state({
+    this.setState({
       currentState: newState,
     });
   }
@@ -35,21 +36,34 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.currentState) {
+      return (
+        <div className="App">
+          <HeaderComponent
+            headerText="Note Making Application"
+          />
+          <BodyComponent
+            titleText={this.state.titleText}
+            titlePlaceHolder="Note Title Here"
+            noteMessage={this.state.noteMessage}
+            notePlaceHolder="Your Note here"
+            maxLength={120}
+            saveNotes={this.saveNotes}
+            noteStorage={this.state.noteStorage}
+            keyId={this.state.key}
+            changeState={this.changeState}
+          />
+          <FooterComponent />
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <HeaderComponent
-          headerText="Note Making Application"
+          headerText="Saved Notes"
         />
-        <BodyComponent
-          titleText={this.state.titleText}
-          titlePlaceHolder="Note Title Here"
-          noteMessage={this.state.noteMessage}
-          notePlaceHolder="Your Note here"
-          maxLength={120}
-          saveNotes={this.saveNotes}
-          noteStorage={this.state.noteStorage}
-          keyId={this.state.key}
-        />
+        <HistoryComponent />
         <FooterComponent />
       </div>
     );
