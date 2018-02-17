@@ -16,7 +16,7 @@ class History extends React.Component {
 
   editNotes(event) {
     const key = event.target.id;
-    // editNotes(key);
+    this.props.editNotes(key);
   }
 
   render() {
@@ -24,7 +24,7 @@ class History extends React.Component {
       <div className="history-displayPane">
         <ShowNotes
           noteStorage={this.props.noteStorage}
-          editNotes={this.props.editNotes}
+          editNotes={this.editNotes}
         />
         <button className="history-goBackButton" onClick={this.changeState}>Create New Note</button>
       </div>
@@ -35,5 +35,6 @@ class History extends React.Component {
 History.propTypes = {
   noteStorage: PropTypes.array.isRequired,
   changeState: PropTypes.func.isRequired,
+  editNotes: PropTypes.func.isRequired,
 };
 export default History;

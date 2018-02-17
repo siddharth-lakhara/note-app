@@ -10,13 +10,14 @@ class App extends React.Component {
     super(props);
     this.state = {
       key: 1,
-      currentState: 0,
+      currentState: 1,
       noteStorage: [],
       titleText: '',
       noteMessage: '',
     };
     this.changeState = this.changeState.bind(this);
     this.saveNotes = this.saveNotes.bind(this);
+    this.editNotes = this.editNotes.bind(this);
   }
 
   changeState(newState) {
@@ -32,6 +33,16 @@ class App extends React.Component {
     }, () => {
       console.log('Save Notes called in App');
       console.log(this.state.noteStorage);
+    });
+  }
+
+  editNotes(key) {
+    const oldNote = this.state.noteStorage[key - 1];
+    this.setState({
+      titleText: oldNote.title,
+      noteMessage: oldNote.message,
+    }, () => {
+      this.changeState(1);
     });
   }
 
