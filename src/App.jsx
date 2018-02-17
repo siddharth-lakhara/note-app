@@ -10,7 +10,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       key: 1,
-      currentState: 1,
+      currentState: 0,
       noteStorage: [],
       titleText: '',
       noteMessage: '',
@@ -63,7 +63,11 @@ class App extends React.Component {
         <HeaderComponent
           headerText="Saved Notes"
         />
-        <HistoryComponent />
+        <HistoryComponent
+          noteStorage={this.state.noteStorage}
+          changeState={this.changeState}
+          editNotes={this.editNotes}
+        />
         <FooterComponent />
       </div>
     );

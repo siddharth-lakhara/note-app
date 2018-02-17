@@ -1,0 +1,16 @@
+.ShowNotes-titleButton {
+    border: none;
+    font-weight: bold;
+    font-size: 25px;
+
+}
+
+.ShowNotes-NoteText {
+    font-size: 15px;
+    width: 50%;
+    font-size: 20px;
+    min-height: 20px;
+    resize: none;
+    overflow: auto;
+    text-align: center;
+}

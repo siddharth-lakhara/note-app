@@ -2,4 +2,12 @@
     flex: 1;
     flex-direction: inherit;
     justify-content: space-around;
+    font-size: 25px;
+}
+
+.history-goBackButton {
+    height: 50px;
+    width: 140px;
+    font-weight: bold;
+    font-size: 14px;
 }
