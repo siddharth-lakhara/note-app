@@ -1,0 +1,5 @@
+.history-displayPane {
+    flex: 1;
+    flex-direction: inherit;
+    justify-content: space-around;
+}

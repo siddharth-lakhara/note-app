@@ -73,6 +73,7 @@ class Body extends React.Component {
             noteMessage={this.state.noteMessage}
             keyId={this.props.keyId}
             clearContents={this.clearContents}
+            changeState={this.props.changeState}
           />
         </div>
       </div>
@@ -89,6 +90,7 @@ Body.propTypes = {
   noteMessage: PropTypes.string.isRequired,
   titleText: PropTypes.string.isRequired,
   keyId: PropTypes.number.isRequired,
+  changeState: PropTypes.func.isRequired,
 };
 
 export default Body;
