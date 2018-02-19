@@ -18,6 +18,13 @@ class App extends React.Component {
     // this.saveNotes = this.saveNotes.bind(this);
     this.editNotes = this.editNotes.bind(this);
     this.clearContents = this.clearContents.bind(this);
+    this.resetKeyLocal = this.resetKeyLocal.bind(this);
+  }
+
+  resetKeyLocal() {
+    this.setState({
+      key: 0,
+    });
   }
 
   changeState(newState) {
@@ -71,9 +78,10 @@ class App extends React.Component {
             notePlaceHolder="Your Note here"
             maxLength={120}
             noteStorage={this.state.noteStorage}
-            keyId={this.state.key}
+            keyLocal={this.state.key}
             changeState={this.changeState}
             clearContents={this.clearContents}
+            resetKeyLocal={this.resetKeyLocal}
           />
           <FooterComponent />
         </div>

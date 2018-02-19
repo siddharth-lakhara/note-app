@@ -35,4 +35,4 @@ ShowNotes.propTypes = {
   editNotes: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps)(ShowNotes);
+export default connect(mapStateToProps, null)(ShowNotes);

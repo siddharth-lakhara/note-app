@@ -7,7 +7,8 @@ const defaultState = {
 const saveNotes = (currentState, newNote) => {
   const oldNotesArray = currentState.noteStorage;
   const key = currentState.key + 1;
-  oldNotesArray[currentState.key - 1] = newNote;
+  oldNotesArray.push(newNote);
+  console.log('new Array: ', oldNotesArray);
   return {
     noteStorage: oldNotesArray,
     key,
@@ -16,10 +17,15 @@ const saveNotes = (currentState, newNote) => {
 
 const editNotes = (prevState, modifiedNote) => {
   const oldKey = modifiedNote.key;
-  const note = modifiedNote.noteStorage;
+  console.log(oldKey);
+  const note = modifiedNote.newNote;
   const newState = prevState.noteStorage;
   newState[oldKey - 1] = note;
-  return newState;
+  console.log(newState);
+  return {
+    noteStorage: newState,
+    key: prevState.key,
+  };
 };
 
 const saveState = (state = defaultState, actions) => {

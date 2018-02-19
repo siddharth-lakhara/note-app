@@ -14,14 +14,22 @@ class Save extends React.Component {
   saveNotes() {
     const message = this.props.noteMessage;
     const title = this.props.titleText;
-    const key = this.props.keyId;
+    let key = this.props.keyId;
+    if (this.props.keyLocal) {
+      key = this.props.keyLocal;
+    }
     const newNoteObject = {
       key,
       title,
       message,
     };
     this.props.clearContents();
-    this.props.saveThisNotes(newNoteObject);
+    if (this.props.keyLocal) {
+      this.props.resetKeyLocal();
+      this.props.editThisNotes(newNoteObject, key);
+    } else {
+      this.props.saveThisNotes(newNoteObject);
+    }
     this.props.changeState(0);
   }
 
@@ -47,10 +55,12 @@ Save.propTypes = {
   noteMessage: PropTypes.string.isRequired,
   titleText: PropTypes.string.isRequired,
   keyId: PropTypes.number.isRequired,
+  keyLocal: PropTypes.number.isRequired,
   clearContents: PropTypes.func.isRequired,
   saveThisNotes: PropTypes.func.isRequired,
   changeState: PropTypes.func.isRequired,
-
+  editThisNotes: PropTypes.func.isRequired,
+  resetKeyLocal: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Save);

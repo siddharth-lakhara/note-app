@@ -71,9 +71,10 @@ class Body extends React.Component {
           <Save
             titleText={this.state.titleText}
             noteMessage={this.state.noteMessage}
-            keyId={this.props.keyId}
+            keyLocal={this.props.keyLocal}
             clearContents={this.clearContents}
             changeState={this.props.changeState}
+            resetKeyLocal={this.props.resetKeyLocal}
           />
         </div>
       </div>
@@ -88,9 +89,10 @@ Body.propTypes = {
   notePlaceHolder: PropTypes.string.isRequired,
   noteMessage: PropTypes.string.isRequired,
   titleText: PropTypes.string.isRequired,
-  keyId: PropTypes.number.isRequired,
+  keyLocal: PropTypes.number.isRequired,
   changeState: PropTypes.func.isRequired,
   clearContents: PropTypes.func.isRequired,
+  resetKeyLocal: PropTypes.func.isRequired,
 };
 
 export default Body;
