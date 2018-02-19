@@ -1,6 +1,17 @@
 
 const defaultState = {
   noteStorage: [],
+  key: 1,
+};
+
+const saveNotes = (currentState, newNote) => {
+  const oldNotesArray = currentState.noteStorage;
+  const key = currentState.key + 1;
+  oldNotesArray[currentState.key - 1] = newNote;
+  return {
+    noteStorage: oldNotesArray,
+    key,
+  };
 };
 
 const editNotes = (prevState, modifiedNote) => {
@@ -14,7 +25,7 @@ const editNotes = (prevState, modifiedNote) => {
 const saveState = (state = defaultState, actions) => {
   switch (actions.type) {
     case 'SAVE':
-      return ({ ...state, noteStorage: [...state, actions.payload] });
+      return (saveNotes(state, actions.payload));
     case 'EDIT':
       return (editNotes(state, actions.payload));
     default:

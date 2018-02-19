@@ -69,7 +69,6 @@ class Body extends React.Component {
           Character left: {this.state.charactersLeft}
           </p>
           <Save
-            saveNotes={this.props.saveNotes}
             titleText={this.state.titleText}
             noteMessage={this.state.noteMessage}
             keyId={this.props.keyId}
@@ -87,7 +86,6 @@ Body.propTypes = {
   maxLength: PropTypes.number.isRequired,
   titlePlaceHolder: PropTypes.string.isRequired,
   notePlaceHolder: PropTypes.string.isRequired,
-  saveNotes: PropTypes.func.isRequired,
   noteMessage: PropTypes.string.isRequired,
   titleText: PropTypes.string.isRequired,
   keyId: PropTypes.number.isRequired,

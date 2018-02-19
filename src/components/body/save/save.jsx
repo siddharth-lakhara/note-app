@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { save } from '../../../redux/actions';
 import './save.css';
 
 class Save extends React.Component {
@@ -18,7 +20,7 @@ class Save extends React.Component {
       message,
     };
     this.props.clearContents();
-    this.props.saveNotes(newNoteObject);
+    this.props.saveThisNotes(newNoteObject);
     this.props.changeState(0);
   }
 
@@ -31,14 +33,22 @@ class Save extends React.Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  saveThisNotes: (newNoteObject) => { dispatch(save(newNoteObject)); },
+});
+
+const mapStateToProps = state => ({
+  keyId: state.saveState.key,
+});
+
 Save.propTypes = {
   noteMessage: PropTypes.string.isRequired,
   titleText: PropTypes.string.isRequired,
   keyId: PropTypes.number.isRequired,
   clearContents: PropTypes.func.isRequired,
-  saveNotes: PropTypes.func.isRequired,
+  saveThisNotes: PropTypes.func.isRequired,
   changeState: PropTypes.func.isRequired,
 
 };
 
-export default Save;
+export default connect(mapStateToProps, mapDispatchToProps)(Save);
