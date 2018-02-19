@@ -23,7 +23,6 @@ class History extends React.Component {
     return (
       <div className="history-displayPane">
         <ShowNotes
-          noteStorage={this.props.noteStorage}
           editNotes={this.editNotes}
         />
         <button className="history-goBackButton" onClick={this.changeState}>Create New Note</button>
@@ -33,11 +32,6 @@ class History extends React.Component {
 }
 
 History.propTypes = {
-  noteStorage: PropTypes.arrayOf(PropTypes.shape({
-    key: PropTypes.number,
-    title: PropTypes.string,
-    message: PropTypes.string,
-  })).isRequired,
   changeState: PropTypes.func.isRequired,
   editNotes: PropTypes.func.isRequired,
 };

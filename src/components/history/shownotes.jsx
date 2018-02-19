@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './shownotes.css';
 
 class ShowNotes extends React.Component {
@@ -21,6 +22,9 @@ class ShowNotes extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  noteStorage: state.saveState.noteStorage,
+});
 
 ShowNotes.propTypes = {
   noteStorage: PropTypes.arrayOf(PropTypes.shape({
@@ -31,4 +35,4 @@ ShowNotes.propTypes = {
   editNotes: PropTypes.func.isRequired,
 };
 
-export default ShowNotes;
+export default connect(mapStateToProps)(ShowNotes);
