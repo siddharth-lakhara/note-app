@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import HeaderComponent from './components/header/header';
 import BodyComponent from './components/body/body';
@@ -9,14 +10,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      key: 1,
-      currentState: 1,
-      noteStorage: [],
+      key: 0,
       titleText: '',
       noteMessage: '',
     };
     this.changeState = this.changeState.bind(this);
-    this.saveNotes = this.saveNotes.bind(this);
+    // this.saveNotes = this.saveNotes.bind(this);
     this.editNotes = this.editNotes.bind(this);
     this.clearContents = this.clearContents.bind(this);
   }
@@ -27,20 +26,21 @@ class App extends React.Component {
     });
   }
 
-  saveNotes(newNoteArray) {
-    const currentKey = newNoteArray.key;
-    const newNoteStorage = this.state.noteStorage;
-    newNoteStorage[currentKey - 1] = newNoteArray;
-    this.setState({
-      noteStorage: newNoteStorage,
-      key: newNoteStorage.length + 1,
-    }, () => {
-      console.log(this.state.noteStorage);
-    });
-  }
+  // saveNotes(newNoteArray) {
+  //   const currentKey = newNoteArray.key;
+  //   const newNoteStorage = this.state.noteStorage;
+  //   newNoteStorage[currentKey - 1] = newNoteArray;
+  //   this.setState({
+  //     noteStorage: newNoteStorage,
+  //     key: newNoteStorage.length + 1,
+  //   }, () => {
+  //     console.log(this.state.noteStorage);
+  //   });
+  // }
 
-  editNotes(key) {
-    const oldNote = this.state.noteStorage[key - 1];
+  editNotes(event) {
+    const key = event.target.id;
+    const oldNote = this.props.noteStorage[key - 1];
     this.setState({
       titleText: oldNote.title,
       noteMessage: oldNote.message,
@@ -70,7 +70,6 @@ class App extends React.Component {
             noteMessage={this.state.noteMessage}
             notePlaceHolder="Your Note here"
             maxLength={120}
-            saveNotes={this.saveNotes}
             noteStorage={this.state.noteStorage}
             keyId={this.state.key}
             changeState={this.changeState}
@@ -97,4 +96,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  noteStorage: state.saveState.noteStorage,
+});
+
+export default connect(mapStateToProps)(App);

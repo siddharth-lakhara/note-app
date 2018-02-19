@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { save } from '../../../redux/actions';
+import { edit } from '../../../redux/actions';
 import './save.css';
 
 class Save extends React.Component {
@@ -35,6 +36,7 @@ class Save extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   saveThisNotes: (newNoteObject) => { dispatch(save(newNoteObject)); },
+  editThisNotes: (newNoteObject, oldKey) => { dispatch(edit(newNoteObject, oldKey)); },
 });
 
 const mapStateToProps = state => ({

@@ -34,4 +34,3 @@ const saveState = (state = defaultState, actions) => {
 };
 
 export default saveState;
-
