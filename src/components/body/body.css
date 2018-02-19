@@ -2,6 +2,7 @@
     flex: 1;
     flex-direction: inherit;
     justify-content: space-around;
+    background-color:#dfdfdf;
 }
 
 .body-noteTitleText, .body-noteBodyText {

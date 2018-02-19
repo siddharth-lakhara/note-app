@@ -6,7 +6,7 @@ class ShowNotes extends React.Component {
   render() {
     return (
       this.props.noteStorage.map(elem => (
-        <div>
+        <div key={elem.key}>
           <button
             className="ShowNotes-titleButton"
             onClick={this.props.editNotes}

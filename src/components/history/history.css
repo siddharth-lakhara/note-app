@@ -3,6 +3,7 @@
     flex-direction: inherit;
     justify-content: space-around;
     font-size: 25px;
+    background-color: #dfdfdf;
 }
 
 .history-goBackButton {
