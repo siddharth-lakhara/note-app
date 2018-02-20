@@ -24,19 +24,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/ping')
-      .then((data) => {
-        console.log('data:', data);
-        const response = data.text();
+    fetch('http://localhost:3000/fetch')
+      .then(data => (data.json()))
+      .then((response) => {
         console.log('response: ', response);
-      });
-  }
-
-  componentWillUnmount() {
-    fetch(('http://localhost:3000/save'), JSON.stringify(this.props.noteStorage))
-      .then((data) => {
-        const response = data.text();
-        console.log(response);
       });
   }
 
