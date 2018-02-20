@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { load } from './redux/actions';
-import PropTypes from 'prop-types';
 import './App.css';
 import HeaderComponent from './components/header/header';
 import BodyComponent from './components/body/body';

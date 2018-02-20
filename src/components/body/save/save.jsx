@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { save } from '../../../redux/actions';
-import { edit } from '../../../redux/actions';
+import { save, edit } from '../../../redux/actions';
 import './save.css';
 
 class Save extends React.Component {
@@ -17,6 +16,10 @@ class Save extends React.Component {
     let key = this.props.keyId;
     if (this.props.keyLocal) {
       key = this.props.keyLocal;
+    }
+    if (title.length === 0 || message.length === 0) {
+      console.log('Empty title or message');
+      return;
     }
     const newNoteObject = {
       key,
