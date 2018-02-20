@@ -9,6 +9,11 @@ export const edit = (newNote, key) => ({
   payload: { newNote, key },
 });
 
+export const load = newNoteStorage => ({
+  type: 'LOAD',
+  payload: newNoteStorage,
+});
+
 export default {
   save,
   edit,

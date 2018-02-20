@@ -4,6 +4,14 @@ const defaultState = {
   key: 1,
 };
 
+const loadNotes = (currentState, newNoteState) => {
+  const newState = {
+    noteStorage: newNoteState,
+    key: newNoteState.length + 1,
+  };
+  return newState;
+};
+
 const saveNotes = (currentState, newNote) => {
   const oldNotesArray = currentState.noteStorage;
   const key = currentState.key + 1;
@@ -30,6 +38,8 @@ const editNotes = (prevState, modifiedNote) => {
 
 const saveState = (state = defaultState, actions) => {
   switch (actions.type) {
+    case 'LOAD':
+      return (loadNotes(state, actions.payload));
     case 'SAVE':
       return (saveNotes(state, actions.payload));
     case 'EDIT':

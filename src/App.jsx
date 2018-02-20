@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { load } from './redux/actions';
+import PropTypes from 'prop-types';
 import './App.css';
 import HeaderComponent from './components/header/header';
 import BodyComponent from './components/body/body';
@@ -28,6 +30,7 @@ class App extends React.Component {
       .then(data => (data.json()))
       .then((response) => {
         console.log('response: ', response);
+        this.props.loadOldNotes(response);
       });
   }
 
@@ -128,4 +131,17 @@ const mapStateToProps = state => ({
   noteStorage: state.saveState.noteStorage,
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  loadOldNotes: (newNoteStorage) => { dispatch(load(newNoteStorage)); },
+});
+
+App.propTypes = {
+  loadOldNotes: PropTypes.func.isRequired,
+  noteStorage: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.number,
+    title: PropTypes.string,
+    message: PropTypes.string,
+  })).isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
