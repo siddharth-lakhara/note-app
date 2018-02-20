@@ -1,16 +1,17 @@
 .ShowNotes-titleButton {
-    border: none;
-    font-weight: bold;
-    font-size: 25px;
-
+      margin-bottom: 1em;
+      text-align: left;
+}
+.containNote{
+    display:flex;
+    flex-direction: column;
+    margin:1em;
 }
 
 .ShowNotes-NoteText {
-    font-size: 15px;
-    width: 50%;
-    font-size: 20px;
-    min-height: 20px;
+    min-height: 75px;
+    height: auto;
     resize: none;
-    overflow: auto;
-    text-align: center;
+    font-size: 18px;
+    
 }

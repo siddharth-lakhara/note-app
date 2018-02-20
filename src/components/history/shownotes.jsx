@@ -7,15 +7,15 @@ class ShowNotes extends React.Component {
   render() {
     return (
       this.props.noteStorage.map(elem => (
-        <div key={elem.key}>
-          <button
+        <div className="containNote" key={elem.key}>
+          <div
             className="ShowNotes-titleButton"
             onClick={this.props.editNotes}
             id={elem.key}
           >
             {elem.title}
-          </button>
-          <div className="ShowNotes-NoteText"> <pre>{elem.message}</pre> </div>
+          </div>
+          <textarea className="ShowNotes-NoteText" value={elem.message} />
         </div>
       ))
     );
