@@ -20,6 +20,7 @@ class App extends React.Component {
     this.editNotes = this.editNotes.bind(this);
     this.clearContents = this.clearContents.bind(this);
     this.resetKeyLocal = this.resetKeyLocal.bind(this);
+    this.syncNotes = this.syncNotes.bind(this);
   }
 
   componentDidMount() {
@@ -29,6 +30,26 @@ class App extends React.Component {
         const response = data.text();
         console.log('response: ', response);
       });
+  }
+
+  componentWillUnmount() {
+    fetch(('http://localhost:3000/save'), JSON.stringify(this.props.noteStorage))
+      .then((data) => {
+        const response = data.text();
+        console.log(response);
+      });
+  }
+
+  syncNotes() {
+    console.log('Sync notes called');
+    fetch('http://localhost:8080/save', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.props.noteStorage),
+    });
   }
 
   resetKeyLocal() {
@@ -107,6 +128,7 @@ class App extends React.Component {
           noteStorage={this.state.noteStorage}
           changeState={this.changeState}
           editNotes={this.editNotes}
+          syncNotes={this.syncNotes}
         />
         <FooterComponent />
       </div>

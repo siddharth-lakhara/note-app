@@ -21,6 +21,7 @@ class History extends React.Component {
           editNotes={this.props.editNotes}
         />
         <button className="history-goBackButton" onClick={this.changeState}>Create New Note</button>
+        <button className="history-goBackButton" onClick={this.props.syncNotes}>Sync Notes</button>
       </div>
     );
   }
@@ -29,5 +30,6 @@ class History extends React.Component {
 History.propTypes = {
   changeState: PropTypes.func.isRequired,
   editNotes: PropTypes.func.isRequired,
+  syncNotes: PropTypes.func.isRequired,
 };
 export default History;

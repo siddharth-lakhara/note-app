@@ -6,7 +6,7 @@ const saveNotes = notesJSON => new Promise((resolve) => {
     notesJSON.map((elem) => {
       PromiseArray.push([
         Models.notes.create({
-          keyId: elem.keyId,
+          keyid: elem.keyId,
           title: elem.title,
           message: elem.message,
         }),
