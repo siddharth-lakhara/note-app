@@ -13,6 +13,7 @@ class App extends React.Component {
       key: 0,
       titleText: '',
       noteMessage: '',
+      currentState: 0,
     };
     this.changeState = this.changeState.bind(this);
     // this.saveNotes = this.saveNotes.bind(this);
