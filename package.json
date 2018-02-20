@@ -5,12 +5,15 @@
   "dependencies": {
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "hapi": "^16.6.2",
+    "pg": "^7.4.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.1",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "sequelize": "^4.33.4",
+    "sequelize-cli": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -26,5 +29,6 @@
     "eslint-plugin-react": "^7.6.1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "proxy": "http://localhost:8080"
 }

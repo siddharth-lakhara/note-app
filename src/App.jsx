@@ -22,6 +22,15 @@ class App extends React.Component {
     this.resetKeyLocal = this.resetKeyLocal.bind(this);
   }
 
+  componentDidMount() {
+    fetch('http://localhost:3000/ping')
+      .then((data) => {
+        console.log('data:', data);
+        const response = data.text();
+        console.log('response: ', response);
+      });
+  }
+
   resetKeyLocal() {
     this.setState({
       key: 0,
