@@ -33,12 +33,9 @@ class App extends React.Component {
 
   syncNotes() {
     console.log('Sync notes called');
-    fetch('http://localhost:8080/save', {
+    console.log(this.props.noteStorage);
+    fetch('http://localhost:3000/save', {
       method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify(this.props.noteStorage),
     });
   }

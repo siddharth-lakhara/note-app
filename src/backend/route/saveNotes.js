@@ -1,12 +1,13 @@
 const Models = require('../models');
 
-const saveNotes = notesJSON => new Promise((resolve) => {
+const saveNotes = notes => new Promise((resolve) => {
   const PromiseArray = [];
   Models.notes.destroy({ where: {} }).then(() => {
+    const notesJSON = JSON.parse(notes);
     notesJSON.map((elem) => {
       PromiseArray.push([
         Models.notes.create({
-          keyid: elem.keyId,
+          keyid: elem.key,
           title: elem.title,
           message: elem.message,
         }),
@@ -22,7 +23,7 @@ module.exports = [{
   method: 'POST',
   path: '/save',
   handler: (req, reply) => {
-    saveNotes(req.payload.notesJSON).then(() => {
+    saveNotes(req.payload).then(() => {
       reply('Save notes called');
     });
   },
